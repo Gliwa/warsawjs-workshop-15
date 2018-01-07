@@ -1,5 +1,14 @@
 body {
   background: #F5F5F5;
+  height: 100vh;
+}
+
+button {
+  background-color: #FFF;
+	padding: 7px 10px;
+	border: 1px solid #CCC;
+	text-transform: uppercase;
+  border-radius: 5px;
 }
 
 * {
@@ -8,11 +17,16 @@ body {
 
 h1,
 #round-info {
+  display: block;
+  margin: 0 auto;
 	text-align: center;
+  width: 400px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .board {
-  margin: 150px auto;
+  margin: 50px auto;
 	height: 300px;
 	width: 300px;
 	font-size: 0;
