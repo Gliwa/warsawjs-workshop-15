@@ -15,12 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function initGame() {
     emptyFields = 9;
-    // STEP 1
     var fields = document.querySelectorAll('.board > div');
+
+    fields.forEach(field => field.removeAttribute('class'));
+
     fields.forEach(field => field.addEventListener('click', fieldClickHandler));
   };
 
   function fieldClickHandler() {
+
     // Declare playerClasses object to hold color for each player (playerA - 'red' and playerB - 'blue')
     // Declare currentPlayer variable to hold currentPlayer name
     var playerClass = playerClasses[currentPlayer];
@@ -30,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Decrese empty fields by 1
     emptyFields--;
 
-    // aAsign to it name of the color of currentPlayer
+    // Assign to it name of the color of currentPlayer
     if (currentPlayer === 'playerA') {
       currentPlayer = 'playerB';
     } else {
@@ -41,10 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     this.removeEventListener('click', fieldClickHandler);
 
     checkWinner();
-    // Alert
-    if (emptyFields === 0) {
-      alert('KONIEC GRY');
-    };
 
     function checkWinner() {
       fields = document.querySelectorAll('.board > div');
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var diag2 = fields[6].className + fields[4].className + fields[2].className;
 
       // Make checks
-      var winning = [
+      var winningCheck = [
         row1,
         row2,
         row3,
@@ -75,15 +74,19 @@ document.addEventListener('DOMContentLoaded', function() {
         diag2
       ];
 
-      if (winning.includes('redredred')) {
+      if (winningCheck.includes('redredred')) {
         alert("Red Wins!");
         return;
-      } else if (winning.includes('blueblueblue')) {
+      } else if (winningCheck.includes('blueblueblue')) {
         alert("Blue Wins!");
         return;
       };
+    };
 
+    // Allow for more than one game
+    if (emptyFields === 0) {
+      alert('KONIEC GRY');
+      initGame();
     };
   };
-
 });
