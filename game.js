@@ -75,18 +75,25 @@ document.addEventListener('DOMContentLoaded', function() {
       ];
 
       if (winningCheck.includes('redredred')) {
-        alert("Red Wins!");
+        setTimeout(() => {
+          alert("Red Wins!");
+          initGame();
+        }, 100);
         return;
       } else if (winningCheck.includes('blueblueblue')) {
-        alert("Blue Wins!");
-        return;
+        setTimeout(() => {
+          alert("Blue Wins!");
+          initGame();
+        }, 100);
       };
     };
 
     // Allow for more than one game
     if (emptyFields === 0) {
-      alert('KONIEC GRY');
-      initGame();
+      setTimeout(() => {
+        alert('KONIEC GRY');
+        initGame();
+      }, 100);
     };
   };
 });
