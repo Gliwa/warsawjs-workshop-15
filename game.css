@@ -1,11 +1,13 @@
 body {
   background: #F5F5F5;
   height: 100vh;
+  padding: 20px;
 }
 
 button {
   background-color: #FFF;
 	padding: 7px 10px;
+  margin: 10px;
 	border: 1px solid #CCC;
 	text-transform: uppercase;
   border-radius: 5px;

@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     'playerB': 0
   };
 
+  var names = {
+    'playerA': 'playerA',
+    'playerB': 'playerB'
+  }
+
   var currentPlayer;
   var emptyFields;
 
@@ -24,10 +29,22 @@ document.addEventListener('DOMContentLoaded', function() {
     displayPlayerScore('playerB');
   });
 
+  for (let player in names) {
+		let renameButton = document.getElementById(`${player}-rename`);
+		renameButton.innerText = `Zmień nazwę ${player}`;
+		renameButton.addEventListener('click', function () {
+			names[player] = prompt(`Zmień nazwę ${player} to:`);
+			renameButton.innerText = `Zmień nazwę ${names[player]}`;
+			displayRoundInformation();
+			displayPlayerScore('playerA');
+			displayPlayerScore('playerB');
+		})
+	}
+
   function displayPlayerScore(player) {
     var score = document.getElementById(`${player}-score`);
 
-    score.innerHTML = `${player}: ${scores[player]}`;
+    score.innerHTML = `${names[player]} score: ${scores[player]}`;
   };
 
   function updatePlayerScore(player) {
@@ -38,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var round = document.getElementById('round-info');
 
     round.className = playerClasses[currentPlayer];
-    round.innerHTML = `Ruch dla ${currentPlayer}`;
+    round.innerHTML = `Ruch dla ${names[currentPlayer]}`;
   };
 
   function initGame() {
@@ -111,14 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (winningCheck.includes('redredred')) {
         setTimeout(() => {
-          alert("Red Wins!");
+          alert(`${names['playerA']} Wins!`);
           updatePlayerScore('playerA');
           initGame();
         }, 100);
         return;
       } else if (winningCheck.includes('blueblueblue')) {
         setTimeout(() => {
-          alert("Blue Wins!");
+          alert(`${names['playerA']} Wins!`);
           updatePlayerScore('playerB');
           initGame();
         }, 100);
