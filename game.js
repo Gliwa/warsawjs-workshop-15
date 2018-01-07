@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function fieldClickHandler() {
-    console.log("Hello", this);
+
+    this.classList.add('red');
   }
+
 });
