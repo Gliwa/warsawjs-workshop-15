@@ -6,12 +6,15 @@ var playerClasses = {
 
 var currentPlayer = 'playerA';
 
+// create variable in which you will store number of empty fileds left
+var emptyFields;
+
 document.addEventListener('DOMContentLoaded', function() {
 
   initGame();
 
   function initGame() {
-
+    emptyFields = 9;
     // STEP 1
     var fields = document.querySelectorAll('.board > div');
     fields.forEach(field => field.addEventListener('click', fieldClickHandler));
@@ -24,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     this.classList.add(playerClass);
 
+    // Decrese empty fields by 1
+    emptyFields--;
+
     // assign to it name of the color of currentPlayer
     if (currentPlayer === 'playerA') {
       currentPlayer = 'playerB';
@@ -33,5 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Remove Click from handler function
     this.removeEventListener('click', fieldClickHandler);
+
+    // Alert
+    if (emptyFields === 0) {
+      alert('KONIEC GRY');
+    }
   };
 });
