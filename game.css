@@ -4,6 +4,10 @@ body {
   padding: 20px;
 }
 
+.game-info {
+  position: absolute;
+}
+
 button {
   background-color: #FFF;
 	padding: 7px 10px;
@@ -11,6 +15,10 @@ button {
 	border: 1px solid #CCC;
 	text-transform: uppercase;
   border-radius: 5px;
+}
+
+.score {
+  margin-left: 20px;
 }
 
 * {
@@ -28,7 +36,7 @@ h1,
 }
 
 .board {
-  margin: 50px auto;
+  margin: 150px auto;
 	height: 300px;
 	width: 300px;
 	font-size: 0;
