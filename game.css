@@ -1,11 +1,20 @@
+body {
+  background: #F5F5F5;
+}
+
 * {
 	box-sizing: border-box;
 }
 
+h1,
+#round-info {
+	text-align: center;
+}
+
 .board {
+  margin: 150px auto;
 	height: 300px;
 	width: 300px;
-	margin: 0 auto;
 	font-size: 0;
 }
 

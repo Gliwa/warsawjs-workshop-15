@@ -4,7 +4,7 @@ var playerClasses = {
   'playerB': 'blue'
 };
 
-var currentPlayer = 'playerA';
+var currentPlayer;
 
 // Create variable in which you will store number of empty fileds left
 var emptyFields;
@@ -13,13 +13,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   initGame();
 
+  function displayRoundInformation() {
+    var round = document.getElementById('round-info');
+
+    round.className = playerClasses[currentPlayer];
+    round.innerHTML = `Ruch dla ${currentPlayer}`;
+  };
+
   function initGame() {
-    emptyFields = 9;
+
     var fields = document.querySelectorAll('.board > div');
+    currentPlayer = 'playerA';
+    emptyFields = 9;
 
     fields.forEach(field => field.removeAttribute('class'));
 
     fields.forEach(field => field.addEventListener('click', fieldClickHandler));
+
+    displayRoundInformation();
   };
 
   function fieldClickHandler() {
@@ -41,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Remove Click from handler function
+    displayRoundInformation();
     this.removeEventListener('click', fieldClickHandler);
 
     checkWinner();
